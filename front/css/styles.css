@@ -1,0 +1,127 @@
+
+:root {
+    --background-color: #E6FFE2;
+    --Ui-background-color: rgba(172, 209, 154, 0.3);
+    --main-color: #ACD19A;
+    --accent-color: #92ad85;
+}
+
+p{
+    margin: 0;
+}
+
+body{
+    background: var(--background-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    border-bottom: solid 3px black;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.logo-container{
+    padding: 3.36% 7% 2.02% 4.43%;
+    width: 14.58%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo{
+    filter:drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+    width: 100%;
+    height: 100%;
+}
+
+.search-bar-container{
+    display: flex;
+    flex-direction: row;
+    padding: 3.36% 7% 2.02% 0;
+    width: 38.39%; 
+}
+
+.search-bar{
+    background-color: var(--Ui-background-color);
+    border: solid black 2px;
+    width: 88%;
+    border-radius: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s linear; 
+}
+
+.search-bar:hover {
+    background-color: var(--background-color);
+    border-radius: 0px;
+}
+
+.search-button-container{
+    border: solid black 2px;
+    width: 11.94%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s linear; 
+}
+
+.search-button-container:hover {
+    background-color: var(--Ui-background-color);
+}
+
+.search-icon-container{
+    width: 100%;
+    height: 100%;
+}
+
+.search-icon{
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+}
+
+.registration-button-container{
+    width: 27.97%;
+    padding: 3.36% 7% 2.02% 0;
+}
+
+.registration-button{
+    display: flex;
+    border: solid 2px black;
+    height: 88%;
+    width: 100%;
+    background-color: var(--main-color);
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 65px;
+    transition: background-color 0.3s linear; 
+}
+
+.registration-button:hover{
+    background-color: var(--accent-color);
+}
+
+.registration-clickbait-text{
+    /* express yourself */
+    padding: 2.25% 1.31%;
+    font-family: 'Inter';
+    font-style: italic;
+    display: flex;  
+    color: #000000;
+    font-weight: 700;
+    font-size: 2vw; /* 2.5% ширини вікна */
+    line-height: 1; 
+}
+
+.search-bar.focused {
+    background-color: var(--main-color);
+}
+.search-button-container.focused{
+    background-color: var(--main-color);
+}
+.registration-button.focused{
+    background-color: var(--Ui-background-color);
+}
