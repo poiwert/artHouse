@@ -1,0 +1,165 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using artHouse.Models
+@using artHouse.Services
+@inject JsonFileVideoService VideoService
+
+@{
+    List<artHouse.Models.Video> videos = VideoService.GetVideos().ToList(); 
+    int videoCount = videos.Count;
+    int totalColumns = 4;
+    int videosPerColumn = (int)Math.Ceiling((double)videoCount / totalColumns);
+}
+
+<div class="card-columns">
+    @for (int i = 0; i < totalColumns; i++)
+    {
+        <div class="card-column">
+            @for (int j = i * videosPerColumn; j < Math.Min((i + 1) * videosPerColumn, videoCount); j++)
+            {
+                var video = videos[j];
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img" src="@video.Preview" alt="Video Preview" />
+                        <p class="card-title">@video.Title</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <button @onclick="(e => SelectVideo(video.Id))"
+                                    data-toggle="modal" data-target="#videoModal"
+                                    class="btn btn-primary info-button">
+                                More Info
+                            </button>
+                            @if (voteCount == 0)
+                            {
+                                <br />
+                                <span>Share your thoughts</span>
+                            }
+                            else
+                            {
+                                <br />
+                                <span>@voteLabel @voteCount</span>
+                                <br />
+                                <span>Current Rating: @currentRating</span>
+                            }
+                            <div class="rating-container">
+                                @for (int k = 1; k <= 5; k++)
+                                {
+                                    var currentStar = k;
+                                    if (k <= currentRating)
+                                    {
+                                        <span class="fa-star fa checked"
+                                        @onclick="(e => SumbitRating(currentStar))"></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fa-star fa"
+                                        @onclick="(e => SumbitRating(currentStar))"></span>
+
+                                    }
+                                }
+                            </div>
+                        </small>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@* Unknown problem with modal window show *@
+@if (selectedVideo != null)
+{
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoTitle">@selectedVideo.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <img class="card-img-top" src="@selectedVideo.Preview" alt="Video Preview">
+                        <div class="card-body">
+                            <p class="card-text">@selectedVideo.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @if (voteCount == 0)
+                    {
+                        <br />
+                        <span>Share your thoughts</span>
+                    }
+                    else
+                    {
+                        <br />
+                        <span>@voteCount @voteLabel</span>
+                        <br />
+                        <span>Current Rating: @currentRating</span>
+                    }
+                    <div class="rating-container">
+                        @for (int k = 1; k <= 5; k++)
+                        {
+                            var currentStar = k;
+                            if (k <= currentRating)
+                            {
+                                <span class="fa-star fa checked"
+                                @onclick="(e => SumbitRating(currentStar))"></span>
+                            }
+                            else
+                            {
+                                <span class="fa-star fa"
+                                @onclick="(e => SumbitRating(currentStar))"></span>
+
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code
+{
+    Video selectedVideo;
+    string selectedVideoId;
+
+    void SelectVideo(string videoId)
+    {
+        selectedVideoId = videoId;
+        selectedVideo = VideoService.GetVideos().First(x => x.Id == videoId);
+        GetCurrentRating();
+    }
+
+    double currentRating = 0;
+    int voteCount = 0;
+    string voteLabel;
+
+    void GetCurrentRating()
+    {
+        if (selectedVideo.Ratings == null)
+        {
+            currentRating = 0;
+            voteCount = 0;
+        }
+        else
+        {
+            voteCount = selectedVideo.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes quantity:" : "Unique vote";
+            currentRating = selectedVideo.Ratings.Sum() / (double)voteCount;
+            currentRating = Math.Round(currentRating * 2) / 2; // Round to nearest 0.5
+        }
+
+        System.Console.WriteLine($"Current rating for { selectedVideo.Id }: { currentRating }");
+    }
+
+    void SumbitRating(int rating)
+    {
+        System.Console.WriteLine($"Rating recieved for { selectedVideo.Id }: { rating }");
+        VideoService.AddRating(selectedVideoId, rating);
+        SelectVideo(selectedVideoId);
+    }
+}
