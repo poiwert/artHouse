@@ -1,0 +1,397 @@
+:root {
+    --background-color: #f7e2ff;
+    --Ui-background-color: rgba(204,147,224, 0.3);
+    --main-color: #cdb4d6;
+    --accent-color: #cc93e0;
+}
+
+.btn:focus,
+.btn:active,
+.custom-btn:focus,
+.custom-btn:active,
+.input:focus,
+.input:active,
+.custom-input:focus,
+.custom-input:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Header 
+   _________________________________________ */
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3% 0 3%;
+    margin: 1.3% 0 1% 0;
+}
+
+/* ___________________________________________ */
+
+/* Logo */
+
+.logo-container {
+    padding: 0.75% 1.65% 0.05% 1.3%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo {
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+    width: 100%;
+    height: 100%;
+}
+
+/* ___________________________________________ */
+
+/* Search bar */
+
+.search-bar-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1.75% 0 1.05% 0; 
+    width: 50%; 
+}
+
+.search-bar {
+    background-color: var(--background-color);
+    border: solid black 0.1vb;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s linear;
+}
+
+.search-bar:hover {
+    background-color: var(--Ui-background-color);
+    border-radius: 0px;
+}
+
+.search-button-container {
+    border: solid black 0.1vb;
+    width: 66%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s linear;
+}
+
+.search-button-container:hover {
+    background-color: var(--Ui-background-color);
+}
+
+.search-icon-container {
+    width: 100%;
+    height: 100%;
+}
+
+.search-icon {
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+}
+
+.search-bar.focused {
+    background-color: var(--main-color);
+}
+
+.search-button-container.focused {
+    background-color: var(--main-color);
+}
+
+/* ___________________________________________ */
+
+/*.modal-window {
+    display: none;
+}
+    .modal-window.focused {
+        display: block;
+        width: 100%;
+        background-color: black;
+    }*/
+
+.modal {
+    height: 100%; !important
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+/* Registration */
+.registration-button-container {
+    width: 30%;
+    padding: 1.75% 0 1.05% 0;
+    margin-right: 1%;
+}
+
+.registration-button {
+    display: flex;
+    box-sizing: border-box;
+    border: solid 0.1vb black;
+    height: 88%;
+    width: 100%;
+    background-color: var(--main-color);
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 65px;
+    transition: background-color 0.3s linear;
+    padding: 0.1%;
+}
+
+.registration-button:hover {
+    background-color: var(--accent-color);
+}
+
+.registration-clickbait-text {
+    padding: 4% 0.68% 4% 0;
+    margin: 0;
+    font-family: 'Inter';
+    font-style: italic;
+    display: flex;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.31vw;
+    line-height: 1;
+}
+
+.registration-button.focused {
+    background-color: var(--Ui-background-color);
+}
+
+/* __________________________________________________ Header end */
+
+/* Nav 
+   _____________________________________________ */
+
+.menu_button {
+    border-right: 0.1vb solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5% 1% 0.5% 0;
+    transition: background-color 0.3s linear;
+}
+
+.menu_button:hover {
+    background-color: var(--Ui-background-color);
+}
+
+.menu_icon {
+    width: 60%;
+    height: 60%;
+}
+
+/* -------------------------------------------------- Nav end*/
+
+.btn.focused{
+    background-color: var(--main-color); !important
+}
+
+.checked {
+    background-color: orange;
+}
+
+.fa {
+    border-radius: 100px;
+}
+
+.fa-star {
+    cursor: pointer;
+    background-color: var(--main-color);
+    border: solid 0.1vb black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5%;
+    height: 1vb;
+    width: 1vb;
+    justify-content: space-around;
+}
+
+.rating-container{
+    display: flex;
+
+}
+/* Main 
+    ________________________________________________________________ */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(0,0,0,0);
+    !important;
+    background-clip: border-box;
+    border: 0px solid black;
+    !important;
+    border-radius: .25rem;
+    margin: 3%;
+}
+
+.card-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.card-columns .card:hover .card-img {
+    opacity: 1;
+}
+
+.card-columns .card-body {
+    height: 10%;
+    margin: 5%;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--background-color);
+}
+
+.card-columns .card-footer {
+    height: 10%;
+    margin: 5%;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--background-color);
+}
+
+.card-columns .card-img {
+    height: 2%;
+    vertical-align: bottom;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    opacity: .8;
+}
+
+.card-img {
+    height: 2%;
+    vertical-align: bottom;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+.card-columns .card:hover {
+    box-shadow: 0 5px 10px rgba(37,33,82,.12), 0 2px 4px rgba(37,33,82,.06);
+}
+
+.card-columns .card-footer {
+    display: flex; !important
+    height: 10%;
+    margin: 5%;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--background-color);
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/* _____________________________________________________________ Main end*/
+
+a.navbar-brand {
+    white-space: normal;
+    font-family: 'Yellowtail', cursive;
+    font-size: xx-large;
+    text-align: center;
+    word-break: break-all;
+}
+
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #000;
+    background-color: var(--main-color);
+    border: solid black 0.1vb;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border {
+    border: solid 0.3vb black !important;
+}
+
+.border-top {
+    border-top: solid 0.3vb black !important;
+}
+
+.border-bottom {
+    border-bottom: solid 0.3vb black !important;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--background-color);
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+}
+
+ul {
+    font-family: 'Nunito', sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Backgrounds */
+
+.bg-navbar {
+    background: linear-gradient(90deg, var(--Ui-background-color) 0%,var(--Ui-background-color) 1%, var(--background-color) 100%);
+}
+
+.bg-footer {
+    background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+    background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+}
