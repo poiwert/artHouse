@@ -1,0 +1,10 @@
+﻿@page
+@using artHouse.Components;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@(await Html.RenderComponentAsync<VideosList>(RenderMode.ServerPrerendered))
+
+<script src="_framework/blazor.server.js"></script>
